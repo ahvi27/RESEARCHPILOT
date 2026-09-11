@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ResearchPilot turns a question into a structured, source-backed report.">
+  <title>ResearchPilot</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1220'/%3E%3Cpath d='M17 18h21a9 9 0 0 1 0 18H25v10h-8V18zm8 7v4h13a2 2 0 1 0 0-4H25z' fill='%236ee7d8'/%3E%3Ccircle cx='45' cy='44' r='5' fill='%23f7c76d'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">R</span><span>ResearchPilot</span></div>
+      <button class="new-button" id="newResearch">＋ New research</button>
+      <div class="side-label">Recent research</div>
+      <div id="history" class="history"><div class="muted">No saved reports yet.</div></div>
+      <div class="sidebar-footer"><span class="status-dot"></span> Local & private</div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
+        <div><span class="eyebrow">RESEARCH WORKSPACE</span><h1>What do you want to understand?</h1></div>
+        <button class="ghost-button" id="exportButton" disabled>Export .md</button>
+      </header>
+
+      <section class="query-card">
+        <label for="query">Research question</label>
+        <textarea id="query" rows="4" placeholder="Example: How is artificial intelligence changing investment attraction in emerging markets?"></textarea>
+        <div class="controls">
+          <div class="field"><label for="depth">Depth</label><select id="depth"><option value="quick">Quick scan</option><option value="standard" selected>Standard</option><option value="deep">Deep dive</option></select></div>
+          <div class="field"><label for="focus">Focus</label><select id="focus"><option value="balanced">Balanced</option><option value="academic">Academic</option><option value="news">Latest news</option><option value="market">Market</option></select></div>
+          <button class="research-button" id="researchButton"><span>Research</span><span>→</span></button>
+        </div>
+      </section>
+
+      <section id="welcome" class="welcome-grid">
+        <button class="prompt-card" data-query="What are the most effective strategies for attracting sustainable foreign direct investment to African industrial parks?"><span>01</span><h2>Sustainable investment</h2><p>Map proven strategies, incentives, and measurable outcomes.</p></button>
+        <button class="prompt-card" data-query="What are the latest practical applications of AI agents in environmental engineering?"><span>02</span><h2>Emerging technology</h2><p>Compare current applications, evidence, and limitations.</p></button>
+        <button class="prompt-card" data-query="How can zero liquid discharge systems be improved for textile industrial parks?"><span>03</span><h2>Technical research</h2><p>Review approaches, trade-offs, costs, and implementation risks.</p></button>
+      </section>
+
+      <section id="loading" class="loading-panel hidden" aria-live="polite">
+        <div class="orb"><span></span><span></span><span></span></div>
+        <div><h2>Investigating your question</h2><p id="loadingText">Finding relevant sources…</p></div>
+      </section>
+
+      <section id="result" class="result-layout hidden">
+        <article class="report-card"><div class="report-meta"><span id="resultDate"></span><span id="resultCount"></span></div><div id="report"></div></article>
+        <aside class="sources-panel"><div class="sources-head"><h2>Sources</h2><span id="sourceBadge">0</span></div><div id="sources"></div></aside>
+      </section>
+      <div id="toast" class="toast hidden" role="status"></div>
+    </main>
+  </div>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
+
